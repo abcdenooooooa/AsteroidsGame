@@ -45,7 +45,7 @@ class Spaceship extends Floater{
 
 class Particle extends Spaceship{
   private int index;
-  Particle(int i){
+  public Particle(int i){
     myPointDirection = ship.getPointDirection();
     corners = 4;
     xCorners = new int[]{-2,-2,2,2};

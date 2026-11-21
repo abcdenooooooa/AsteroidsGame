@@ -58,13 +58,13 @@ public void keyReleased(){
 public void deleteParticle(int ind){
   p.remove(ind);
   for (int i = ind; i < p.size(); i++){
-    p.get(i).index = i;
+    p.get(i).setIndex(i);
   }
 }
 
 public void deleteAsteroid(int ind){
   a.remove(ind);
   for (int i = ind; i < a.size(); i++){
-    a.get(i).index = i;
+    a.get(i).setIndex(i);
   }
 }

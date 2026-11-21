@@ -1,5 +1,5 @@
 class Asteroid extends Floater{
-  private int index;
+  public int index;
   public Asteroid(int ind){
     corners = 5+(int)(Math.random()*6);
     xCorners = new float[corners];

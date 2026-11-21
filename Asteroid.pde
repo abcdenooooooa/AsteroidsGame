@@ -31,7 +31,7 @@ class Asteroid extends Floater{
     }
   }
 
-  public void getIndex(){
+  public int getIndex(){
     return index;
   }
 }

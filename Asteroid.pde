@@ -1,5 +1,5 @@
 class Asteroid extends Floater{
-  public int index;
+  private int index;
   public Asteroid(int ind){
     corners = 5+(int)(Math.random()*6);
     xCorners = new float[corners];
@@ -29,5 +29,9 @@ class Asteroid extends Floater{
     if (dist((float)myCenterX,(float)myCenterY,(float)ship.getX(),(float)ship.getY()) < 25){
       deleteAsteroid(index);
     }
+  }
+
+  public void getIndex(){
+    return index;
   }
 }

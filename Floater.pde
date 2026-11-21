@@ -1,8 +1,8 @@
 class Floater //Do NOT modify the Floater class! Make changes in the Spaceship class 
 {   
   protected int corners; 
-  protected int[] xCorners;   
-  protected int[] yCorners;   
+  protected float[] xCorners;   
+  protected float[] yCorners;   
   protected int myColor;   
   protected int myOpacity;
   protected double myCenterX, myCenterY;
@@ -17,8 +17,7 @@ class Floater //Do NOT modify the Floater class! Make changes in the Spaceship c
   
     myXspeed += (0.1 * Math.cos(dRadians));    
     myYspeed += (0.1 * Math.sin(dRadians));      
-    p[numParticles] = new Particle(numParticles);
-    numParticles++;
+    p.add(new Particle(p.size()));
   }   
   public void turn ()   
   {        
@@ -29,23 +28,23 @@ class Floater //Do NOT modify the Floater class! Make changes in the Spaceship c
     myCenterX += myXspeed;    
     myCenterY += myYspeed;     
   
-    //if(myCenterX >width)
-    //{     
-    //  myCenterX = 0;    
-    //}    
-    //else if (myCenterX<0)
-    //{     
-    //  myCenterX = width;    
-    //}    
-    //if(myCenterY >height)
-    //{    
-    //  myCenterY = 0;    
-    //} 
+    if(myCenterX >6000+originX)
+    {     
+      myCenterX = -6000+originX;
+    }    
+    else if (myCenterX<-6000+originX)
+    {     
+      myCenterX = 6000+originX;
+    }    
+    if(myCenterY > 6000+originY)
+    {    
+      myCenterY = -6000+originY;
+    } 
     
-    //else if (myCenterY < 0)
-    //{     
-    //  myCenterY = height;    
-    //}
+    else if (myCenterY < -6000+originY)
+    {     
+      myCenterY = 6000+originY;  
+    }
     
     if (accel){
       accelerate();

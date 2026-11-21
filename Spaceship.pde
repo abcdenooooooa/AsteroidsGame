@@ -1,8 +1,8 @@
 class Spaceship extends Floater{
   public Spaceship(){
     
-    xCorners = new int[]{-15,15,15,18,20,18,15,15,-15,-14};
-    yCorners = new int[]{-3,-6,-4,-3,0,3,4,6,3,0};
+    xCorners = new float[]{-15,15,15,18,20,18,15,15,-15,-14};
+    yCorners = new float[]{-3,-6,-4,-3,0,3,4,6,3,0};
     corners = xCorners.length;
     myCenterX = 300;
     myCenterY = 300;
@@ -16,8 +16,8 @@ class Spaceship extends Floater{
     if (!turningLeft){turningLeft = k == 'a';}
     if (!turningRight){turningRight = k == 'd';}
     if (k == 'q'){
-      myCenterX = originX-2400+Math.random()*4800;
-      myCenterY = originY-2400+Math.random()*4800;
+      myCenterX = originX-5700+(int)(Math.random()*12000);
+      myCenterY = originY-5700+(int)(Math.random()*12000);
       myXspeed = 0;
       myYspeed = 0;
       myPointDirection = Math.random()*360;
@@ -48,8 +48,8 @@ class Particle extends Spaceship{
   public Particle(int i){
     myPointDirection = ship.getPointDirection();
     corners = 4;
-    xCorners = new int[]{-2,-2,2,2};
-    yCorners = new int[]{2,-2,-2,2};
+    xCorners = new float[]{-2,-2,2,2};
+    yCorners = new float[]{2,-2,-2,2};
     myCenterX = ship.getX() - (16)*Math.cos(myPointDirection*(Math.PI/180));
     myCenterY = ship.getY() - (16)*Math.sin(myPointDirection*(Math.PI/180));
     myCenterX -= (myCenterX - 300)/5;

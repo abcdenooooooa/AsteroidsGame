@@ -70,4 +70,8 @@ class Particle extends Spaceship{
     myCenterX -= shipXDistToCenter/5;
     myCenterY -= shipYDistToCenter/5;
   }
+
+  public int getIndex(){
+    return index;
+  }
 }

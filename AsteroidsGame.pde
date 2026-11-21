@@ -1,7 +1,7 @@
 Spaceship ship = new Spaceship();
-Particle[] p = new Particle[100];
-Star[] s = new Star[1000];
-int numParticles = 0;
+ArrayList<Particle> p = new ArrayList<Particle>();
+Star[] s = new Star[500];
+ArrayList<Asteroid> a = new ArrayList<Asteroid>();
 float originX = 300,originY = 300;
 double shipXDistToCenter, shipYDistToCenter;
 
@@ -10,6 +10,9 @@ public void setup(){
   background(0);
   for (int i = 0; i < s.length; i++){
     s[i] = new Star();
+  }
+  for (int i = 0; i < 500; i++){
+    a.add(new Asteroid(i));
   }
 }
 
@@ -23,16 +26,23 @@ public void draw(){
   shipYDistToCenter = ship.getY() - 300;
   originX -= shipXDistToCenter/5;
   originY -= shipYDistToCenter/5;
-  for (int i = 0; i < numParticles; i++){
-    p[i].move();
-    p[i].adjust();
-    p[i].show();
-    p[i].fade();
+  for (int i = 0; i < p.size(); i++){
+    p.get(i).move();
+    p.get(i).adjust();
+    p.get(i).show();
+    p.get(i).fade();
   }
   for (int i = 0; i < s.length; i++){
     s[i].adjust();
     s[i].show();
   }
+  for (int i = 0; i < a.size(); i++){
+    a.get(i).move();
+    a.get(i).adjust();
+    a.get(i).checkCollision();
+    a.get(i).show();
+  }
+  
   text((int)ship.getXspeed(),50,300);
   text((int)ship.getYspeed(),50,315);
 }
@@ -46,12 +56,15 @@ public void keyReleased(){
 }
 
 public void deleteParticle(int ind){
-  p[ind] = null;
-  for (int i = ind; i < numParticles; i++){
-    p[i] = p[i + 1];
-    if (p[i] != null){
-    p[i].index = i;
-    }
+  p.remove(ind);
+  for (int i = ind; i < p.size(); i++){
+    p.get(i).index = i;
   }
-  numParticles--;
+}
+
+public void deleteAsteroid(int ind){
+  a.remove(ind);
+  for (int i = ind; i < a.size(); i++){
+    a.get(i).index = i;
+  }
 }
